@@ -43,4 +43,4 @@ Foram implementadas 16 funções, sendo acionadas da seguinte forma:
 
 Simulação na plataforma Wokwi: [Teclado Interativo](https://wokwi.com/projects/420386719995015169).
 
-TODO - Vídeo demonstrando as funcionalidades da solução implementada: [Vídeo Demonstrativo](#).
+Vídeo demonstrando as funcionalidades da solução implementada: [Vídeo Demonstrativo](https://youtu.be/J6NnjEEjA-M).
