@@ -17,8 +17,10 @@ void fa();
 void sol();
 void la();
 void si();
+void tocar_notas();
 void natal1();
 void natal2();
+void alarme();
 
 //Funções
 int main() {
@@ -29,15 +31,14 @@ int main() {
 
     while (true) 
     {
-        // Verifica se há conexão USB e se um caractere está disponível
-        if (stdio_usb_connected()) {
-            // Lê um caractere com timeout de 100ms (evita bloqueios)
-            int c = getchar_timeout_us(100 * 1000);
-            
-            // Verifica se o caractere foi capturado
-            if (c != PICO_ERROR_TIMEOUT) {
-                // Converte para char e imprime no terminal
-                printf("Tecla: l%c\n", (char)c);
+      // Lê um caractere com timeout de 100ms (evita bloqueios)
+      int c = getchar_timeout_us(100 * 1000);
+
+      // Verifica se o caractere foi capturado
+      if ((c != PICO_ERROR_TIMEOUT) && (c != 10)) 
+      {
+        // Converte para char e imprime no terminal
+        printf("Tecla: %c\n", (char)c);
                 switch (c)
                 {
                     case '1':
@@ -51,12 +52,20 @@ int main() {
                         break;
                     case '4':
                         /* code */
+                        fa();
+                        break;
                     case '5':
                         /* code */
+                        sol();
+                        break;
                     case '6':
                         /* code */
+                        la();
+                        break;
                     case '7':
                         /* code */
+                        si();
+                        break;
                     case '8':
                         natal1();
                         break;
@@ -73,29 +82,36 @@ int main() {
                         break;
                     case 'B':
                         /* code */
+                        gpio_put(LED_R, 0); // Apaga o led vermelho
+                        gpio_put(LED_G, 0); // Apaga o LED verde
+                        gpio_put(LED_B, 1); // Acende o led azul
+                        break;
                     case 'C':
+                        gpio_put(LED_G, 0); // Apaga o LED verde
+                        gpio_put(LED_B, 0); // Apaga o led azul
                         gpio_put(LED_R, 1); // Acende o LED vermelho
                         break;
                     case 'D':
+                        // Ligar LED branco
+                        gpio_put(LED_B, 1); // Acende o LED azul
                         gpio_put(LED_R, 1); // Acende o LED vermelho
                         gpio_put(LED_G, 1); // Acende o LED verde
-                        gpio_put(LED_B, 1); // Acende o LED azul
                         break;
                     case '*':
                         gpio_put(LED_B, 0); // Apaga o led azul
                         gpio_put(LED_R, 0); // Apaga o led vermelho
-                        gpio_put(LED_G, 0); // Acende o LED verde
+                        gpio_put(LED_G, 0); // Apaga o LED verde
                         gpio_put(buzzer_pin, 0); // Desliga o buzzer
                         break;
                     case '#':
-                        // Ligar LED branco
+                        //Ligar Tudo
                         gpio_put(LED_B, 1); // Acende o led azul
                         gpio_put(LED_R, 1); // Acende o led vermelho
                         gpio_put(LED_G, 1); // Acende o LED verde
+                        tocar_notas();
                         break;
                     default:
                         break;
-                }
             }
         }
         sleep_ms(20);
@@ -109,16 +125,20 @@ void iniciar_pinos(){
     //Iniciar buzzer
     gpio_init(buzzer_pin);
     gpio_set_dir(buzzer_pin, GPIO_OUT);
+    gpio_pull_down(buzzer_pin);
 
     //Iniciar LEDs
     gpio_init(LED_B);
     gpio_set_dir(LED_B, GPIO_OUT);
+    gpio_pull_down(LED_B);
 
     gpio_init(LED_G);
     gpio_set_dir(LED_G, GPIO_OUT);
+    gpio_pull_down(LED_G);
 
     gpio_init(LED_R);
     gpio_set_dir(LED_R, GPIO_OUT);
+    gpio_pull_down(LED_R);
 }
 
 void som_buz(uint16_t freq, uint16_t duration_ms)
@@ -290,4 +310,15 @@ void alarme() {
         som_buz(2000, 300);  // Frequência alta (2000 Hz) - Som curto
         sleep_ms(100);       // Pausa curta
     }
+}
+
+//Tocar notas musicais em sequência
+void tocar_notas(){
+    doh();
+    re();
+    mi();
+    fa();
+    sol();
+    la();
+    si();
 }
