@@ -50,17 +50,13 @@ int main() {
                         mi();
                         break;
                     case '4':
-                        fa();
-                        break;
+                        /* code */
                     case '5':
-                        sol();
-                        break;
+                        /* code */
                     case '6':
-                        la();
-                        break;
+                        /* code */
                     case '7':
-                        si();
-                        break;
+                        /* code */
                     case '8':
                         natal1();
                         break;
@@ -71,19 +67,13 @@ int main() {
                         /* code */
                         break;
                     case 'A':
-                        gpio_put(LED_G, 1); // Acende o LED verde
-                        break;
+                        /* code */
                     case 'B':
-                        gpio_put(LED_B, 1); // Acende o LED azul
-                        break;
+                        /* code */
                     case 'C':
-                        gpio_put(LED_R, 1); // Acende o LED vermelho
-                        break;
+                        /* code */
                     case 'D':
-                        gpio_put(LED_R, 1); // Acende o LED vermelho
-                        gpio_put(LED_G, 1); // Acende o LED verde
-                        gpio_put(LED_B, 1); // Acende o LED azul
-                        break;
+                        /* code */
                     case '*':
                         /* code */
                         break;
