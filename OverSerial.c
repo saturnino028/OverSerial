@@ -177,7 +177,7 @@ void sol(){
 }
 
 void la(){
-  som_buz(440, 500); // Frequência da nota mi e duração de 0,5 segundo
+  som_buz(440, 500); // Frequência da nota lá e duração de 0,5 segundo
 }
 
 void si(){
