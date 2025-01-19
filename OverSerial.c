@@ -64,22 +64,34 @@ int main() {
                         natal2();
                         break;
                     case '0':
-                        /* code */
+                        alarme();
                         break;
                     case 'A':
-                        /* code */
+                        gpio_put(LED_B, 0); // Apaga o led azul
+                        gpio_put(LED_R, 0); // Apaga o led vermelho
+                        gpio_put(LED_G, 1); // Acende o LED verde
+                        break;
                     case 'B':
                         /* code */
                     case 'C':
                         gpio_put(LED_R, 1); // Acende o LED vermelho
                         break;
                     case 'D':
-                        /* code */
+                        gpio_put(LED_R, 1); // Acende o LED vermelho
+                        gpio_put(LED_G, 1); // Acende o LED verde
+                        gpio_put(LED_B, 1); // Acende o LED azul
+                        break;
                     case '*':
-                        /* code */
+                        gpio_put(LED_B, 0); // Apaga o led azul
+                        gpio_put(LED_R, 0); // Apaga o led vermelho
+                        gpio_put(LED_G, 0); // Acende o LED verde
+                        gpio_put(buzzer_pin, 0); // Desliga o buzzer
                         break;
                     case '#':
-                        /* code */
+                        // Ligar LED branco
+                        gpio_put(LED_B, 1); // Acende o led azul
+                        gpio_put(LED_R, 1); // Acende o led vermelho
+                        gpio_put(LED_G, 1); // Acende o LED verde
                         break;
                     default:
                         break;
@@ -267,4 +279,15 @@ void natal2(){
     doh(); sleep_ms(200);
     re(); sleep_ms(200);
     mi(); sleep_ms(1500);
+}
+
+// alarme
+void alarme() {
+    // Alarme: Alternando entre 1000 Hz e 2000 Hz
+    for (int i = 0; i < 5; i++) { // Repetir 5 vezes para o efeito contínuo
+        som_buz(1000, 300);  // Frequência baixa (1000 Hz) - Som curto
+        sleep_ms(100);       // Pausa curta
+        som_buz(2000, 300);  // Frequência alta (2000 Hz) - Som curto
+        sleep_ms(100);       // Pausa curta
+    }
 }
