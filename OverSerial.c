@@ -17,6 +17,8 @@ void fa();
 void sol();
 void la();
 void si();
+void natal1();
+void natal2();
 
 //Funções
 int main() {
@@ -39,46 +41,48 @@ int main() {
                 switch (c)
                 {
                     case '1':
-                        /* code */
+                        doh();
                         break;
                     case '2':
-                        /* code */
+                        re();
                         break;
                     case '3':
-                        /* code */
+                        mi();
                         break;
                     case '4':
-                        /* code */
+                        fa();
                         break;
                     case '5':
-                        /* code */
+                        sol();
                         break;
                     case '6':
-                        /* code */
+                        la();
                         break;
                     case '7':
-                        /* code */
+                        si();
                         break;
                     case '8':
-                        /* code */
+                        natal1();
                         break;
                     case '9':
-                        /* code */
+                        natal2();
                         break;
                     case '0':
                         /* code */
                         break;
                     case 'A':
-                        /* code */
+                        gpio_put(LED_G, 1); // Acende o LED verde
                         break;
                     case 'B':
-                        /* code */
+                        gpio_put(LED_B, 1); // Acende o LED azul
                         break;
                     case 'C':
-                        /* code */
+                        gpio_put(LED_R, 1); // Acende o LED vermelho
                         break;
                     case 'D':
-                        /* code */
+                        gpio_put(LED_R, 1); // Acende o LED vermelho
+                        gpio_put(LED_G, 1); // Acende o LED verde
+                        gpio_put(LED_B, 1); // Acende o LED azul
                         break;
                     case '*':
                         /* code */
@@ -127,4 +131,149 @@ void som_buz(uint16_t freq, uint16_t duration_ms)
         sleep_us(period / 2);  // Espera metade do período
     }
 
+}
+
+void doh(){
+    som_buz(261, 500); // Frequência da nota dó e duração de 0,5 segundo
+}
+
+void re(){
+    som_buz(293, 500); // Frequência da nota ré e duração de 0,5 segundo
+}
+
+void mi(){
+    som_buz(330, 500); // Frequência da nota mi e duração de 0,5 segundo
+}
+
+void fa(){
+    som_buz(349, 500); // Frequência da nota fá e duração de 0,5 segundo
+}
+
+void sol(){
+    som_buz(392, 500); // Frequência da nota sol e duração de 0,5 segundo
+}
+
+void la(){
+  som_buz(440, 500); // Frequência da nota mi e duração de 0,5 segundo
+}
+
+void si(){
+    som_buz(493, 500); // Frequência da nota si e duração de 0,5 segundo
+}
+
+//Noite Feliz - Natal 1
+void natal1(){
+    sol();
+    sleep_ms(100);
+    la();
+    sol();
+    mi();
+
+    sleep_ms(1000);
+
+    sol();
+    sleep_ms(100);
+    la();
+    sol();
+    mi();
+
+    sleep_ms(1000);
+
+    re();
+    sleep_ms(100);
+    re();
+    sleep_ms(100);
+    si();
+
+    sleep_ms(1000);
+
+    doh();
+    sleep_ms(100);
+    doh();
+    sol();
+
+    sleep_ms(1000);
+
+    la();
+    sleep_ms(100);
+    la();
+    doh();
+    si();
+    la();
+    sol();
+    sleep_ms(100);
+    la();
+    sol();
+    mi();
+
+    sleep_ms(1000);
+
+    la();
+    sleep_ms(100);
+    la();
+    doh();
+    si();
+    la();
+    sol();
+    sleep_ms(100);
+    la();
+    sol();
+    mi();
+
+    re();
+    sleep_ms(100);
+    re();
+    fa();
+    re();
+    si();
+    sleep_ms(100);
+    mi();
+
+    sleep_ms(1000);
+
+    doh();
+    sol();
+    mi();
+    sleep_ms(100);
+    fa();
+    re();
+    doh();
+}
+
+//Jingle Bells - Natal 2
+void natal2(){
+    mi(); sleep_ms(200);
+    mi(); sleep_ms(200);
+    mi(); sleep_ms(400);
+  
+    mi(); sleep_ms(200);
+    mi(); sleep_ms(200);
+    mi(); sleep_ms(400);
+
+    mi(); sleep_ms(200);
+    sol(); sleep_ms(200);
+    doh(); sleep_ms(200);
+    re(); sleep_ms(200);
+    mi(); sleep_ms(600);
+
+    fa(); sleep_ms(200);
+    fa(); sleep_ms(200);
+    fa(); sleep_ms(200);
+    fa(); sleep_ms(200);
+
+    fa(); sleep_ms(200);
+    mi(); sleep_ms(200);
+    mi(); sleep_ms(200);
+    mi(); sleep_ms(200);
+    mi(); sleep_ms(200);
+    re(); sleep_ms(200);
+    re(); sleep_ms(200);
+    mi(); sleep_ms(200);
+    re(); sleep_ms(200);
+
+    sol(); sleep_ms(200);
+    mi(); sleep_ms(200);
+    doh(); sleep_ms(200);
+    re(); sleep_ms(200);
+    mi(); sleep_ms(1500);
 }
